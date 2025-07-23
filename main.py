@@ -3,13 +3,13 @@ import requests
 import subprocess
 import sys
 
-UPDATE_URL = "https://raw.githubusercontent.com/Sofia-openAI/Sofia-app/main/main.py"
+UPDATE_URL = "https://raw.githubusercontent.com/Sofia-openAI/Sofia-app/main/SofiaApp.py"
 
 def check_for_updates():
     try:
         r = requests.get(UPDATE_URL)
         if r.status_code == 200:
-            with open("main.py", "wb") as f:
+            with open("SofiaApp.py", "wb") as f:
                 f.write(r.content)
             print("✅ Обновление получено. Перезапуск...")
             subprocess.Popen([sys.executable])
@@ -23,3 +23,4 @@ def main():
 
 check_for_updates()
 main()
+Rename main.py to SofiaApp.py
