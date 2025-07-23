@@ -30,7 +30,7 @@ jobs:
         mv dist/*.exe dist-upload/
 
     - name: Upload exe
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: SofiaApp
         path: dist-upload/
