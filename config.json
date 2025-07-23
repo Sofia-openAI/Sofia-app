@@ -1,4 +1,5 @@
 {
   "voice": "default",
-  "wake_word": "софия"
+  "wake_word": "София",
+  "auto_update": true
 }
