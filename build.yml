@@ -1,0 +1,33 @@
+name: Build SofiaApp
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Build with PyInstaller
+      run: |
+        pip install pyinstaller
+        pyinstaller --onefile main.py --name SofiaApp
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: SofiaApp
+        path: dist/SofiaApp.exe
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/SofiaApp.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
