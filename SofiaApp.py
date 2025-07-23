@@ -15,7 +15,7 @@ def check_for_updates():
             subprocess.Popen([sys.executable])
             sys.exit()
     except Exception as e:
-        print(f"Ошибка при обновлении: {e}")
+        print(f"❌ Ошибка при обновлении: {e}")
 
 def main():
     print("Привет, шеф!")
@@ -23,4 +23,3 @@ def main():
 
 check_for_updates()
 main()
-Rename main.py to SofiaApp.py
