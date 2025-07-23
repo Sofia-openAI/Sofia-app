@@ -10,7 +10,7 @@ def check_for_updates():
             with open("main.py", "wb") as f:
                 f.write(r.content)
             print("🔄 Обновление получено. Перезапуск...")
-            os.execv(_file_, ['python'] + sys.argv)
+            os.execv(sys.executable, [sys.executable] + sys.argv)
     except Exception as e:
         print(f"Ошибка при обновлении: {e}")
 
