@@ -1,5 +1,5 @@
 {
-  "voice": "default",
-  "wake_word": "София",
-  "auto_update": true
+  "auto_update": true,
+  "voice_enabled": true,
+  "remote_url": "https://raw.githubusercontent.com/Sofia-openAI/Sofia-app/main/main_logic.py"
 }
