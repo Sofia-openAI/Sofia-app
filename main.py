@@ -1,7 +1,7 @@
 import os
 import requests
 
-UPDATE_URL = "https://example.com/latest_version/main.py"
+UPDATE_URL = "https://raw.githubusercontent.com/Sofia-openAI/Sofia-app/refs/heads/main/main.py"
 
 def check_for_updates():
     try:
