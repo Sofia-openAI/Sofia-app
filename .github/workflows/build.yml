@@ -33,6 +33,3 @@ jobs:
       with:
         name: SofiaApp
         path: dist/SofiaApp.exe
-        with:
-          name: SofiaApp
-          path: dist/SofiaApp.exe
