@@ -21,6 +21,4 @@ def download_update():
 def main():
     download_update()
     subprocess.run(["python", LOCAL_FILE])  # Запуск SofiaApp.py через Python
-
-if __name__ == "__main__":
-    main()
+    input("Нажмите Enter для выхода...")
