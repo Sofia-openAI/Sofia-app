@@ -14,6 +14,9 @@ def download_update():
                 f.write(r.content)
             with open("sofia_log.txt", "a", encoding="utf-8") as log:
                 log.write("✅ Обновление получено и сохранено.\n")
+            # Перезапуск после обновления с аргументом --updated
+            subprocess.Popen(["python", LOCAL_FILE, "--updated"])
+            sys.exit()
         else:
             raise Exception(f"Статус обновления: {r.status_code}")
     except Exception as e:
@@ -23,10 +26,8 @@ def download_update():
 def main():
     if "--updated" not in sys.argv:
         download_update()
-        subprocess.run(["python", LOCAL_FILE, "--updated"])
-        return
-    print("✅ София обновлена и активна. Шеф, я на связи.")
+    print("🟢 Шеф, все работают. Правда :)")
     input("Нажмите Enter для выхода...")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
