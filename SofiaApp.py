@@ -10,12 +10,12 @@ def check_for_updates():
         if r.status_code == 200:
             with open("SofiaApp.py", "wb") as f:
                 f.write(r.content)
-            with open("sofia_log.txt", "w") as log:
+            with open("sofia_log.txt", "a", encoding="utf-8") as log:
                 log.write("✅ Обновление получено и сохранено.\n")
-            os.startfile(sys.argv[0])  # ← ключевой фикс
+            os.startfile(sys.argv[0])  # Ключевой фикс — запуск .exe заново
             sys.exit()
     except Exception as e:
-        with open("sofia_log.txt", "w") as log:
+        with open("sofia_log.txt", "a", encoding="utf-8") as log:
             log.write(f"❌ Ошибка при обновлении: {e}\n")
 
 def main():
