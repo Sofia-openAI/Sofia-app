@@ -1,28 +1,26 @@
 import os
 import sys
 import requests
-import time
+import subprocess
 
 UPDATE_URL = "https://raw.githubusercontent.com/Sofia-openAI/Sofia-app/main/SofiaApp.py"
+LOCAL_FILE = "SofiaApp.py"
 
-def check_for_updates():
+def download_update():
     try:
         r = requests.get(UPDATE_URL)
         if r.status_code == 200:
-            with open("SofiaApp.py", "wb") as f:
+            with open(LOCAL_FILE, "wb") as f:
                 f.write(r.content)
             with open("sofia_log.txt", "a", encoding="utf-8") as log:
                 log.write("✅ Обновление получено и сохранено.\n")
-            os.startfile(sys.argv[0])  # Перезапуск EXE
-            sys.exit()
     except Exception as e:
         with open("sofia_log.txt", "a", encoding="utf-8") as log:
             log.write(f"❌ Ошибка при обновлении: {e}\n")
-        time.sleep(5)  # Добавлена пауза, чтобы не схлопывалось окно
 
 def main():
-    print("✅ Обновление применено. София на связи, шеф.")
-    input("Нажмите Enter для выхода...")
+    download_update()
+    subprocess.run(["python", LOCAL_FILE])  # Запуск SofiaApp.py через Python
 
-check_for_updates()
-main()
+if _name_ == "_main_":
+    main()
