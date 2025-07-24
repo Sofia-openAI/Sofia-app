@@ -22,5 +22,5 @@ def main():
     download_update()
     subprocess.run(["python", LOCAL_FILE])  # Запуск SofiaApp.py через Python
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
