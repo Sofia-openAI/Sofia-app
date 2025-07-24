@@ -14,11 +14,19 @@ def download_update():
                 f.write(r.content)
             with open("sofia_log.txt", "a", encoding="utf-8") as log:
                 log.write("✅ Обновление получено и сохранено.\n")
+        else:
+            raise Exception(f"Статус обновления: {r.status_code}")
     except Exception as e:
         with open("sofia_log.txt", "a", encoding="utf-8") as log:
             log.write(f"❌ Ошибка при обновлении: {e}\n")
 
 def main():
-    download_update()
-    subprocess.run(["python", LOCAL_FILE])  # Запуск SofiaApp.py через Python
+    if "--updated" not in sys.argv:
+        download_update()
+        subprocess.run(["python", LOCAL_FILE, "--updated"])
+        return
+    print("✅ София обновлена и активна. Шеф, я на связи.")
     input("Нажмите Enter для выхода...")
+
+if _name_ == "_main_":
+    main()
